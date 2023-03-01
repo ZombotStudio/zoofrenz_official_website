@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+  <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+
+  <!-- <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
+  /> -->
+
+  <link rel="stylesheet" href="css/style.min.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+  <title>Sitemap</title>
+</head>
+
+
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div class="wrapper">
+      <main>
+        <section class="section">
+          <div class="section__container container">
+            <div class="section__wrap">
+              <h2 class="mb-2">Pages</h2>
+
+              <ol class="pages-list">
+                <li>
+                  <a href="./home.html">Home</a>
+                </li>
+                <li>
+                  <a href="./claim.html">3D Claim</a>
+                </li>
+                <li>
+                  <a href="./team.html">Team</a>
+                </li>
+                <li>
+                  <a href="./merch.html">Merch</a>
+                </li>
+                <li>
+                  <a href="./zoolandia.html">Zoolandia</a>
+                </li>
+                <li>
+                  <a href="./404.html">Not found</a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
