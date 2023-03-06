@@ -13,11 +13,11 @@
             <ul>
               <li>
                 <a href="#">Features</a>
-                <!-- <a v-on:click="ListAwakenedZoofrenz()" class="btn">Features(NFT)</a> -->
+                <a v-on:click="ListAllZoofrenzToken()" class="btn">Features(NFT)</a>
               </li>
               <li>      
                 <a href="#">Docs</a>
-                <!-- <a v-on:click="BalanceOfZoofrenzToken()" class="btn">Docs(Bal)</a> -->
+                <a v-on:click="BalanceOfZoofrenzToken()" class="btn">Docs(Bal)</a>
               </li>
               <li>
                 <a href="#">Merch</a>
@@ -115,11 +115,11 @@ export default {
       Web3.connectWallet();
       // web3.handleConnectClick(1,2);
     },
-    ListAwakenedZoofrenz: function () {
-      Web3.ListAwakenedZoofrenz();
+    ListAllZoofrenzToken: function () {
+      Web3.ListAllZoofrenzToken();
     },
     BalanceOfZoofrenzToken: function () {
-      Web3.BalanceOfZoofrenzToken();
+      Web3.ListTokenIdLIst();
       // Web3.ZoofrenzTokenTokenOfOwnerByIndex();
     },
   },

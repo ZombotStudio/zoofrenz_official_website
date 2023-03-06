@@ -13,6 +13,8 @@ import { ZoofrenzFirstClassPass } from "./ZoofrenzFirstClassPass";
 import { FrenshipToken } from "./FrenshipToken";
 import { ZooFrenzToken } from "./ZooFrenzToken";
 
+const tokenIdList = [];
+
 var Web3Manager = {
   async connectWallet() {
     const MAINNET_RPC_URL =
@@ -81,49 +83,59 @@ var Web3Manager = {
       ZooFrenzToken.init(this.web3);
 
       // this.walletAddress = String(this.wallets[0].accounts[0].address);
-      
-      this.walletAddress = "0x43a2e4bB618766FFd175330E0De2927D29e86be1";
+
+      this.walletAddress = "0xc9c76085b28afe42f1670b2E512FCA8aC6Ad91c2";
     }
-
-    
-  },  
-  ListAwakenedZoofrenz() {
-    const listNFTsPromise = AwakenedZoofrenz.tokensOfOwner(
-      this.walletAddress
-    );
-
-    listNFTsPromise.then(
-      (nfts) => {
-        const msg = String(nfts);
-        console.log(msg);
-      }
-    );
   },
-  BalanceOfZoofrenzToken() {
+  ListAllZoofrenzToken() {
+    this.ListAwakenedZoofrenzToken();
+    this.ListZoofrenzToken();
+  },
+
+  ListAwakenedZoofrenzToken() {
+    // const listNFTsPromise = AwakenedZoofrenz.tokensOfOwner(this.walletAddress);
+
+    const listNFTsPromise = AwakenedZoofrenz.tokensOfOwner(
+      "0x43a2e4bB618766FFd175330E0De2927D29e86be1"
+    );
+
+    listNFTsPromise.then((nfts) => {
+      const nftsString = String(nfts);
+      const nftArray = nftsString.split(",");
+      nftArray.forEach(element => {
+        tokenIdList.push(element);
+      });      
+      console.log("Done ListAwakenedZoofrenzToken");
+    });
+  },
+  ListZoofrenzToken() {
     const balanceOfZoofrenzTokenPromise = ZooFrenzToken.balanceOf(
       this.walletAddress
     );
 
-    balanceOfZoofrenzTokenPromise.then(
-      (bal) => {
-        const msg = String(bal);
-        console.log(msg);
-      }
-    );
-  },
-  ZoofrenzTokenTokenOfOwnerByIndex() {
-    const ZoofrenzTokenTokenOfOwnerByIndexPromise = ZooFrenzToken.tokenOfOwnerByIndex(
-      this.walletAddress,
-      0
-    );
+    balanceOfZoofrenzTokenPromise.then((bal) => {
+      const msg = String(bal);
+      console.log(msg);
 
-    ZoofrenzTokenTokenOfOwnerByIndexPromise.then(
-      (bal) => {
-        const msg = String(bal);
-        console.log(msg);
+      for (var i = 0; i < bal; i++) {
+        const ZoofrenzTokenTokenOfOwnerByIndexPromise =
+          ZooFrenzToken.tokenOfOwnerByIndex(this.walletAddress, i);
+
+        ZoofrenzTokenTokenOfOwnerByIndexPromise.then((bal) => {
+          const msg = String(bal);
+          // console.log(msg);
+          tokenIdList.push(msg); 
+          console.log("done " + i);                 
+        });
       }
-    );
-  }
+    });
+  },
+  ListTokenIdLIst()
+  {
+    tokenIdList.forEach(element => {
+      console.log(element);
+    });
+  }  
 };
 
 export default Web3Manager;
