@@ -13,9 +13,11 @@
             <ul>
               <li>
                 <a href="#">Features</a>
+                <!-- <a v-on:click="ListAwakenedZoofrenz()" class="btn">Features(NFT)</a> -->
               </li>
-              <li>
+              <li>      
                 <a href="#">Docs</a>
+                <!-- <a v-on:click="BalanceOfZoofrenzToken()" class="btn">Docs(Bal)</a> -->
               </li>
               <li>
                 <a href="#">Merch</a>
@@ -101,7 +103,7 @@
 </template>
 
 <script>
-import web3 from "../web3/web3";
+import Web3 from "../web3/web3";
 
 export default {
   name: "ClaimPage",
@@ -110,8 +112,15 @@ export default {
       alert(num1 + num2);
     },
     connectWallet: function () {
-      web3.connectWallet();
+      Web3.connectWallet();
       // web3.handleConnectClick(1,2);
+    },
+    ListAwakenedZoofrenz: function () {
+      Web3.ListAwakenedZoofrenz();
+    },
+    BalanceOfZoofrenzToken: function () {
+      Web3.BalanceOfZoofrenzToken();
+      // Web3.ZoofrenzTokenTokenOfOwnerByIndex();
     },
   },
 };

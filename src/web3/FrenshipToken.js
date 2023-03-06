@@ -1,5 +1,5 @@
 import { FrenshipToken as FrenshipTokenABI } from "./abi/FrenshipToken";
-const contractFrenshipToken = "0x1f5C8F58d92854a50Ce505CF5A52616B12BDa01E";
+const contractFrenshipToken = "0xCE141c45619e9AdBDBdDA5af19B3052Ff79d5663";
 class FrenshipToken {
     constructor() { }
     init(web3) {
