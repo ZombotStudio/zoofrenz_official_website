@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Zombot.Networking.Proto;
+
+message RequestSignedMessageParameters {
+  string address = 1;
+}
+
+message RequestSignedMessageResponse {
+  string message = 1;
+}

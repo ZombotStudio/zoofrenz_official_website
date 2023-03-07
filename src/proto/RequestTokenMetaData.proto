@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package Zombot.Networking.Proto;
+
+message RequestTokenMetaDataParameters {
+
+}
+
+message RequestTokenMetaDataResponse {
+  
+  message MetaAttribute {
+    string trait_type = 1;
+    string value = 2;
+  }
+  
+  string name = 1;
+  string description = 2;
+  string image = 3;
+  int64  edition = 4;
+  int64  date = 5;
+  repeated MetaAttribute attributes = 6;
+}
+
+message RequestEditionIdMapResponse {
+  map<int32, int32> editions = 1;
+}
+
+message RequestRarityMapResponse {
+  map<int32, int32> rarities = 1;
+}
