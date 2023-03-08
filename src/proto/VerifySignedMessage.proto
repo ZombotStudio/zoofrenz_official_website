@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package Zombot.Networking.Proto;
-
 message VerifySignedMessageParameters {
   string address = 1;
   string message = 2;

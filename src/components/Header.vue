@@ -17,7 +17,7 @@
               </li>
               <li>      
                 <a href="#">Docs</a>
-                <a v-on:click="BalanceOfZoofrenzToken()" class="btn">Docs(Bal)</a>
+                <a v-on:click="BalanceOfZoofrenzToken()" class="btn">Docs(Bal2)</a>
               </li>
               <li>
                 <a href="#">Merch</a>
@@ -119,9 +119,14 @@ export default {
       Web3.ListAllZoofrenzToken();
     },
     BalanceOfZoofrenzToken: function () {
-      Web3.ListTokenIdLIst();
+      // alert(2);
+      Web3.RequestSign();
+      // Web3.ListTokenIdLIst();
+      // 
+      // Web3.ListAllZoofrenzToken();
       // Web3.ZoofrenzTokenTokenOfOwnerByIndex();
     },
+    
   },
 };
 </script>
