@@ -58,11 +58,16 @@
 </template>
 
 <script>
-
 export default  {
   name:  'MerchView',
   mounted() {
         document.body.className = 'merch-page pc webp';
+        let fancyboxScript = document.createElement('script')
+        fancyboxScript.setAttribute('src', 'js/app.min.js')
+        document.head.appendChild(fancyboxScript)
+
+       
     }
 };
+
 </script>
