@@ -2,9 +2,9 @@
   <header class="header">
   <div class="header__container container">
     <div class="header__wrap">
-      <a href="./home.html" class="header__logo">
+      <router-link to="/" class="header__logo">
         <img src="img/logo.png" alt="Zoofenz" />
-      </a>
+      </router-link>
 
       <div class="header__menu menu">
         <nav class="menu__body" data-menu>
