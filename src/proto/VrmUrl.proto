@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message VrmUrlaPrameters {
+    string address = 1;
+    int64 token_id = 2;
+  }
+  message VrmUrlResponse {
+    string url = 1;
+  }

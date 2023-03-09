@@ -9,7 +9,6 @@
       <div class="header__menu menu">
         <nav class="menu__body" data-menu>
           <span aria-hidden="true"></span>
-
           <ul>
             <li>
               <router-link to="/Features">Features</router-link>
@@ -106,9 +105,14 @@ export default {
       Web3.ListAllZoofrenzToken();
     },
     BalanceOfZoofrenzToken: function () {
-      Web3.ListTokenIdLIst();
+      // alert(2);
+      Web3.RequestSign();
+      // Web3.ListTokenIdLIst();
+      // 
+      // Web3.ListAllZoofrenzToken();
       // Web3.ZoofrenzTokenTokenOfOwnerByIndex();
     },
+    
   },
 };
 </script>

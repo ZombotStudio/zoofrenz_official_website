@@ -7,11 +7,12 @@ import ledgerModule from "@web3-onboard/ledger";
 
 import { ethers } from "ethers";
 import Web3 from "web3";
-// // import { init } from '@web3-onboard/vue'
 import { AwakenedZoofrenz } from "./AwakenedZoofrenz";
 import { ZoofrenzFirstClassPass } from "./ZoofrenzFirstClassPass";
 import { FrenshipToken } from "./FrenshipToken";
 import { ZooFrenzToken } from "./ZooFrenzToken";
+
+import http from "../api/http";
 
 const tokenIdList = [];
 
@@ -82,9 +83,12 @@ var Web3Manager = {
       FrenshipToken.init(this.web3);
       ZooFrenzToken.init(this.web3);
 
-      // this.walletAddress = String(this.wallets[0].accounts[0].address);
+      this.walletAddress = String(this.wallets[0].accounts[0].address);
 
-      this.walletAddress = "0xc9c76085b28afe42f1670b2E512FCA8aC6Ad91c2";
+      var responseData = await http.requestSign(this.walletAddress);
+      
+      this.SignMessage(responseData);
+      // this.walletAddress = "0xc9c76085b28afe42f1670b2E512FCA8aC6Ad91c2";
     }
   },
   ListAllZoofrenzToken() {
@@ -102,9 +106,9 @@ var Web3Manager = {
     listNFTsPromise.then((nfts) => {
       const nftsString = String(nfts);
       const nftArray = nftsString.split(",");
-      nftArray.forEach(element => {
+      nftArray.forEach((element) => {
         tokenIdList.push(element);
-      });      
+      });
       console.log("Done ListAwakenedZoofrenzToken");
     });
   },
@@ -124,18 +128,37 @@ var Web3Manager = {
         ZoofrenzTokenTokenOfOwnerByIndexPromise.then((bal) => {
           const msg = String(bal);
           // console.log(msg);
-          tokenIdList.push(msg); 
-          console.log("done " + i);                 
+          tokenIdList.push(msg);
+          console.log("done " + i);
         });
       }
     });
   },
-  ListTokenIdLIst()
-  {
-    tokenIdList.forEach(element => {
+  ListTokenIdLIst() {
+    tokenIdList.forEach((element) => {
       console.log(element);
     });
-  }  
+  },  
+  SignMessage(mes) {
+    var signaturePromise = this.signer.signMessage(mes);
+
+    signaturePromise.then(
+      (msg) => {
+        console.log("accesstoken");        
+        console.log(msg);
+
+        http.verifySignedMessage(this.walletAddress,msg);
+      },
+      (msg) => {
+        console.log("error");
+        console.log(msg);
+
+        // if (onMessageSigned) {
+        //   Module["dynCall_vii"](onMessageSigned, false, msg);
+        // }
+      }
+    );
+  },
 };
 
 export default Web3Manager;
