@@ -3,7 +3,10 @@
   <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+  />
 
   <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
 
@@ -12,18 +15,25 @@
     href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
   /> -->
 
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+  />
+
   <link rel="stylesheet" href="css/style.min.css" />
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
   <title>Zoolandia</title>
 </head>
 
 
-  <body>
+  <body class="zoo-page">
     <div class="wrapper">
       <header class="header">
   <div class="header__container container">
     <div class="header__wrap">
-      <a href="/" class="header__logo">
+      <a href="./home.html" class="header__logo">
         <img src="img/logo.png" alt="Zoofenz" />
       </a>
 
@@ -33,13 +43,10 @@
 
           <ul>
             <li>
-              <a href="#">Features</a>
+              <a href="./zoolandia.html">Features</a>
             </li>
             <li>
-              <a href="#">Docs</a>
-            </li>
-            <li>
-              <a href="#">Merch</a>
+              <a href="./merch.html">Merch</a>
             </li>
             <li>
               <a href="#">More</a>
@@ -47,25 +54,15 @@
 
               <ul class="menu__sublist">
                 <li>
-                  <a href="#">Why</a>
+                  <a href="./why.html">Why</a>
                 </li>
                 <li>
-                  <a href="#">Team</a>
+                  <a href="./team.html">Team</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Buy</a>
-              <span class="menu__arrow"></span>
-
-              <ul class="menu__sublist">
-                <li>
-                  <a href="#">Item</a>
-                </li>
-                <li>
-                  <a href="#">Item</a>
-                </li>
-              </ul>
+              <a href="./claim.html">3D Claim</a>
             </li>
           </ul>
 
@@ -75,7 +72,7 @@
             <ul class="menu__soc soc">
               <li>
                 <a
-                  href="#"
+                  href="https://twitter.com/zoofrenzNFT"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-twitter"
@@ -83,7 +80,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/zoofrenz.eth/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-instagram"
@@ -91,7 +88,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://discord.com/invite/zoofrenznft"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-discord"
@@ -99,7 +96,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://opensea.io/collection/zoofrenz-apefrenz-2-0"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-ship"
@@ -134,72 +131,282 @@
           </div>
         </section>
 
-        <section class="section">
-          <div class="section__container container">
-            <div class="section__wrap">
-              <h2 class="section__title section-title">
-                Welcome to Zoolandia!
-              </h2>
-
-              <div class="section__card card card--brown card--shadow-top">
-                <h3 class="card__title">
-                  A place where everyone <span>belongs</span>
-                </h3>
-
-                <div class="card__body">
-                  <p>
-                    When we started Zoofrenz, we wanted to create more than just
-                    a pfp collection. We wanted to create a world. Enter
-                    Zoolandia, where all the diverse Zoofrenz animals call home.
-                  </p>
-                  <p>
-                    Zoolandia encompasses an entire ecosystem of collectibles
-                    and utility. From our original Apefrenz NFT collection to
-                    our virtual gathering platform Third Space, this project
-                    spans every corner of Web3 and we’re constantly exploring
-                    new areas for more!
-                  </p>
-                  <p>
-                    Who knows what surprises we’ll uncover together in
-                    Zoolandia?
-                  </p>
-                </div>
-              </div>
-
-              <div class="row align-items-center">
-                <div class="col-md-6 mb-4">
-                  <img src="img/zoolandia/img-card.png" alt="" />
+        <div class="zoo-bg">
+          <section class="section">
+            <div class="section__container container">
+              <div class="section__wrap pb-3">
+                <div class="row justify-content-center mb-10">
+                  <div class="col-md-8">
+                    <h2 class="section__title section-title">
+                      Welcome to Zoolandia!
+                    </h2>
+                  </div>
                 </div>
 
-                <div class="col-md-6 mb-4">
-                  <div class="section__card card card--green">
-                    <h3 class="card__title">
-                      APE INTO A WHOLE NEW <span>WORLD</span>
-                    </h3>
+                <div class="row justify-content-center mb-10">
+                  <div class="col-md-9">
+                    <div
+                      class="section__card card card--brown card--shadow-top card--gradient-purple"
+                    >
+                      <h3 class="card__title">
+                        A place where <br />
+                        everyone <span>belongs</span>
+                      </h3>
 
-                    <div class="card__body">
-                      <p>
-                        The Apefrenz are the most advanced species inhabiting
-                        Zoolandia. Without their Pioneer spirit, none of this
-                        would be possible.
-                      </p>
-                      <p>
-                        6,666 Apefrenz were chosen to become a part of our first
-                        PFP collection, and holding one is the key to unlocking
-                        everything Zoolandia has to offer.
-                      </p>
+                      <div class="card__body">
+                        <p>
+                          When we started Zoofrenz, we wanted to create more
+                          than just a pfp collection. We wanted to create a
+                          world. Enter Zoolandia, where all the diverse Zoofrenz
+                          animals call home.
+                        </p>
+                        <p>
+                          Zoolandia encompasses an entire ecosystem of
+                          collectibles and utility. From our original Apefrenz
+                          NFT collection to our virtual gathering platform Third
+                          Space, this project spans every corner of Web3 and
+                          we’re constantly exploring new areas for more!
+                        </p>
+                        <p>
+                          Who knows what surprises we’ll uncover together in
+                          Zoolandia?
+                        </p>
+                      </div>
                     </div>
+                  </div>
+                </div>
 
-                    <a href="#" class="card__btn btn btn--green">
-                      Join the Zoofrenz Family today! →
-                    </a>
+                <div class="row align-items-center">
+                  <div class="col-md-5 mb-4">
+                    <img src="img/zoolandia/img-card.png" alt="" />
+                  </div>
+
+                  <div class="col-md-7 mb-4">
+                    <div class="section__card card card--green card--vertical">
+                      <h3 class="card__title">
+                        APE INTO A <br />
+                        WHOLE NEW <br />
+                        <span>WORLD</span>
+                      </h3>
+
+                      <div class="card__body">
+                        <p>
+                          The Apefrenz are the most advanced species inhabiting
+                          Zoolandia. Without their Pioneer spirit, none of this
+                          would be possible.
+                        </p>
+                        <p>
+                          6,666 Apefrenz were chosen to become a part of our
+                          first PFP collection, and holding one is the key to
+                          unlocking everything Zoolandia has to offer.
+                        </p>
+                      </div>
+
+                      <a
+                        href="https://discord.com/invite/zoofrenznft"
+                        class="card__btn card-btn"
+                        target="_blank"
+                      >
+                        Join the Zoofrenz Family today! →
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
+          <!-- Coin -->
+          <section class="zoo-coin">
+            <div class="zoo-coin__container container">
+              <div class="zoo-coin__wrap">
+                <div class="zoo-coin__row">
+                  <div class="zoo-coin__col">
+                    <div
+                      class="zoo-coin__card card card--purple card--gradient-purple"
+                    >
+                      <h3 class="card__title">
+                        $FRENSHIP IS FREE WEN <span>YOU HAVE FRENZ</span>
+                      </h3>
+
+                      <div class="card__body">
+                        <p>
+                          $FRENSHIP is the central coin powering the Zoofrenz
+                          economy. Each Apefrenz generates $FRENSHIP on a daily
+                          basis, with rarer Apefrenz generating more $FRENSSHIP.
+                        </p>
+                      </div>
+
+                      <a
+                        href="#"
+                        class="card__btn card__btn--absolute card-btn"
+                      >
+                        Learn more about our $FRENSHIP tokens →
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="zoo-coin__col">
+                    <div class="zoo-coin__img">
+                      <img src="img/zoolandia/coin.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Img Card -->
+          <section class="zoo-img-card">
+            <div class="zoo-img-card__container container">
+              <div class="zoo-img-card__wrap">
+                <div class="zoo-img-card__row">
+                  <div class="zoo-img-card__col">
+                    <div class="zoo-img-card__img">
+                      <img src="img/zoolandia/pioneers.jpg" alt="" />
+                    </div>
+                  </div>
+
+                  <div class="zoo-img-card__col">
+                    <div class="zoo-img-card__card card card--red">
+                      <h3 class="card__title">
+                        <span>FIRST</span> CLASS PERKS FOR TRUE PIONEERS
+                      </h3>
+
+                      <div class="card__body">
+                        <p>
+                          The word ‘First’ in our First Class Pass doesn’t mean
+                          you’re sitting at the top - it means you’re leading
+                          the pack. First Class Pass holders will receive
+                          exclusive perks, merch, and early access to what we’re
+                          working on in exchange for venturing with us into
+                          uncharted territory.
+                        </p>
+                      </div>
+
+                      <a href="#" class="card__btn card-btn">
+                        Purchase a First Class Pass →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section__container container">
+              <div class="section__wrap">
+                <div class="section__img text-center mb-4">
+                  <img src="img/zoolandia/flow.png" alt="" />
+                </div>
+
+                <div class="row justify-content-center">
+                  <div class="col-md-8">
+                    <div class="card card--brown">
+                      <h3 class="card__title">
+                        AWAKEN TO A <br />
+                        <span>NEW</span> YOU
+                      </h3>
+
+                      <div class="card__body">
+                        <p>
+                          Using Float Tanks, Apefrenz can be Awakened to their
+                          true potential. Only by Awakening your OG Apefrenz is
+                          it possible to obtain an Apefrenz of the highest
+                          rarity.
+                        </p>
+                      </div>
+
+                      <a href="#" class="card__btn card-btn">
+                        Purchase a Float Tank →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="zoo-ascend">
+            <div class="zoo-ascend__container container">
+              <div class="zoo-ascend__wrap">
+                <div class="zoo-ascend__row">
+                  <div class="zoo-ascend__col">
+                    <div class="zoo-ascend__card card card--green">
+                      <h3 class="card__title">
+                        <span>ASCEND</span> TO A NEW DIMENSION
+                      </h3>
+
+                      <div class="card__body">
+                        <p>
+                          Every Zoofrenz 2D PFP holder automatically has access
+                          to a 3D Avatar. Each avatar comes Metaverse-ready, and
+                          grants access to our Third Space platform.
+                        </p>
+                      </div>
+
+                      <a href="#" class="card__btn card-btn">
+                        Learn more about our 3D Avatars →
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="zoo-ascend__col">
+                    <div class="zoo-ascend__img">
+                      <img src="img/zoolandia/ascend.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Space -->
+          <section class="zoo-space">
+            <div class="zoo-space__container container">
+              <div class="zoo-space__wrap">
+                <div class="row flex-wrap-reverse">
+                  <div class="col-md-6 col-xs-7">
+                    <div class="zoo-space__img">
+                      <img src="img/zoolandia/space.jpg" alt="" />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-xs-5">
+                    <div class="zoo-space__text">
+                      <h2 class="zoo-space__title">
+                        A <span>NEW</span> SPACE TO FILL THE VOID
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row justify-content-end">
+                  <div class="col-md-8">
+                    <div class="card card--red">
+                      <div class="card__body">
+                        <p>
+                          We got tired of hosting Web3 community events on ‘old
+                          school’ Web2 platforms, so we made our own virtual
+                          gathering space! Third Space is open to all 3D
+                          Zoolandia residents, and will soon be welcoming our
+                          partner projects as well!
+                        </p>
+                      </div>
+
+                      <a href="#" class="card__btn card-btn">
+                        Learn more about Third Space →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Find -->
         <section class="zoo-find">
           <img
             src="img/zoolandia/find-decor-01.png"
@@ -306,6 +513,12 @@
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
 
 <script src="js/app.min.js"></script>
+
+<script>
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    // Your custom options
+  });
+</script>
 
     </div>
   </body>

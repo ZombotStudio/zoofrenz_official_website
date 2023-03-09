@@ -3,7 +3,10 @@
   <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+  />
 
   <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
 
@@ -11,6 +14,13 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
   /> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+  />
 
   <link rel="stylesheet" href="css/style.min.css" />
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
@@ -23,7 +33,7 @@
       <header class="header">
   <div class="header__container container">
     <div class="header__wrap">
-      <a href="/" class="header__logo">
+      <a href="./home.html" class="header__logo">
         <img src="img/logo.png" alt="Zoofenz" />
       </a>
 
@@ -33,13 +43,10 @@
 
           <ul>
             <li>
-              <a href="#">Features</a>
+              <a href="./zoolandia.html">Features</a>
             </li>
             <li>
-              <a href="#">Docs</a>
-            </li>
-            <li>
-              <a href="#">Merch</a>
+              <a href="./merch.html">Merch</a>
             </li>
             <li>
               <a href="#">More</a>
@@ -47,25 +54,15 @@
 
               <ul class="menu__sublist">
                 <li>
-                  <a href="#">Why</a>
+                  <a href="./why.html">Why</a>
                 </li>
                 <li>
-                  <a href="#">Team</a>
+                  <a href="./team.html">Team</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Buy</a>
-              <span class="menu__arrow"></span>
-
-              <ul class="menu__sublist">
-                <li>
-                  <a href="#">Item</a>
-                </li>
-                <li>
-                  <a href="#">Item</a>
-                </li>
-              </ul>
+              <a href="./claim.html">3D Claim</a>
             </li>
           </ul>
 
@@ -75,7 +72,7 @@
             <ul class="menu__soc soc">
               <li>
                 <a
-                  href="#"
+                  href="https://twitter.com/zoofrenzNFT"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-twitter"
@@ -83,7 +80,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/zoofrenz.eth/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-instagram"
@@ -91,7 +88,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://discord.com/invite/zoofrenznft"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-discord"
@@ -99,7 +96,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://opensea.io/collection/zoofrenz-apefrenz-2-0"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-ship"
@@ -123,7 +120,7 @@
 </header>
 
 
-      <main><section class="section text-center">
+      <main><section class="section text-center section--full">
   <div class="section__container container">
     <div class="section__wrap">
       <h2 class="section__title h1">404</h2>
@@ -206,6 +203,12 @@
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
 
 <script src="js/app.min.js"></script>
+
+<script>
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    // Your custom options
+  });
+</script>
 
     </div>
   </body>

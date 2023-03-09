@@ -3,57 +3,54 @@
   <div class="footer__container container">
     <div class="footer__wrap">
       <div class="footer__row">
-        <a href="/" class="footer__logo">
+        <router-link to="/" class="footer__logo">
           <img src="img/logo.png" alt="Zoofrenz" />
-        </a>
+        </router-link>
 
         <nav class="footer__nav">
           <ul class="footer__menu">
             <li>
-              <a href="#">Features</a>
+              <router-link to="/Features">Features</router-link>
             </li>
             <li>
-              <a href="#">Docs</a>
-            </li>
-            <li>
-              <a href="#">Merch</a>
+              <router-link to="/Merch">Merch</router-link>
             </li>
           </ul>
         </nav>
 
         <ul class="footer__soc soc">
           <li>
-            <a
-              href="http://#"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="icon-twitter"
-            ></a>
-          </li>
-          <li>
-            <a
-              href="http://#"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="icon-instagram"
-            ></a>
-          </li>
-          <li>
-            <a
-              href="http://#"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="icon-discord"
-            ></a>
-          </li>
-          <li>
-            <a
-              href="http://#"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="icon-ship"
-            ></a>
-          </li>
+                <a
+                  href="https://twitter.com/zoofrenzNFT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-twitter"
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/zoofrenz.eth/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-instagram"
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://discord.com/invite/zoofrenznft"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-discord"
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://opensea.io/collection/zoofrenz-apefrenz-2-0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-ship"
+                ></a>
+              </li>
         </ul>
       </div>
     </div>

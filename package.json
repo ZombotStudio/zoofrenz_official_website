@@ -29,7 +29,7 @@
     "store": "^2.0.12",
     "stream-browserify": "^3.0.0",
     "vue": "^3.2.13",
-    "vuejs-jwt": "^1.1.0",
+    "vue-router": "^4.1.6",
     "web3": "^1.8.2"
   },
   "devDependencies": {

@@ -3,7 +3,10 @@
   <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+  />
 
   <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
 
@@ -12,18 +15,25 @@
     href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
   /> -->
 
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+  />
+
   <link rel="stylesheet" href="css/style.min.css" />
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
-  <title>3D Claim</title>
+  <title>Zoofenz</title>
 </head>
 
 
-  <body>
+  <body class="home-page">
     <div class="wrapper">
       <header class="header">
   <div class="header__container container">
     <div class="header__wrap">
-      <a href="/" class="header__logo">
+      <a href="./home.html" class="header__logo">
         <img src="img/logo.png" alt="Zoofenz" />
       </a>
 
@@ -33,13 +43,10 @@
 
           <ul>
             <li>
-              <a href="#">Features</a>
+              <a href="./zoolandia.html">Features</a>
             </li>
             <li>
-              <a href="#">Docs</a>
-            </li>
-            <li>
-              <a href="#">Merch</a>
+              <a href="./merch.html">Merch</a>
             </li>
             <li>
               <a href="#">More</a>
@@ -47,25 +54,15 @@
 
               <ul class="menu__sublist">
                 <li>
-                  <a href="#">Why</a>
+                  <a href="./why.html">Why</a>
                 </li>
                 <li>
-                  <a href="#">Team</a>
+                  <a href="./team.html">Team</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Buy</a>
-              <span class="menu__arrow"></span>
-
-              <ul class="menu__sublist">
-                <li>
-                  <a href="#">Item</a>
-                </li>
-                <li>
-                  <a href="#">Item</a>
-                </li>
-              </ul>
+              <a href="./claim.html">3D Claim</a>
             </li>
           </ul>
 
@@ -75,7 +72,7 @@
             <ul class="menu__soc soc">
               <li>
                 <a
-                  href="#"
+                  href="https://twitter.com/zoofrenzNFT"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-twitter"
@@ -83,7 +80,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/zoofrenz.eth/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-instagram"
@@ -91,7 +88,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://discord.com/invite/zoofrenznft"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-discord"
@@ -99,7 +96,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://opensea.io/collection/zoofrenz-apefrenz-2-0"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-ship"
@@ -123,30 +120,108 @@
 </header>
 
 
-      <main class="main">
-        <section class="main__banner main-banner">
+      <main>
+        <!-- Top -->
+        <section class="home">
           <img
-            src="img/3d/hero-bg-01.svg"
+            src="img/home/home-bg-01.jpg"
             alt=""
-            class="main-banner__bg main-banner__bg--01"
+            class="home__bg home__bg--01"
           />
 
           <img
-            src="img/3d/hero-bg-02.svg"
+            src="img/home/home-bg-02.png"
             alt=""
-            class="main-banner__bg main-banner__bg--02"
+            class="home__bg home__bg--02"
           />
 
-          <div class="main-banner__container container container--sm">
-            <div class="main-banner__wrap">
-              <div class="main-banner__card card">
-                <h1 class="card__title"><span>HOW</span> TO CLAIM 3D MODELS</h1>
+          <img
+            src="img/home/home-bg-03.png"
+            alt=""
+            class="home__bg home__bg--03"
+          />
+
+          <div class="home__container container">
+            <div class="home__wrap">
+              <img src="img/home/logo.png" alt="" class="home__logo" />
+
+              <h1 class="home__title section-title section-title--pink">
+                Tagline goes here.
+              </h1>
+
+              <div class="home__media-row">
+                <img
+                  src="img/home/home-img-01.png"
+                  alt=""
+                  class="home__media-img home__media-img--01"
+                />
+
+                <div class="home__video-card video-card">
+                  <div class="video-card__media">
+                    <video poster="img/home/video.jpg">
+                      <source src="files/waterfall.mp4" type="video/mp4" />
+                    </video>
+
+                    <a href="#" class="video-card__btn-play btn-play"></a>
+                  </div>
+                </div>
+
+                <img
+                  src="img/home/home-img-02.png"
+                  alt=""
+                  class="home__media-img home__media-img--02"
+                />
+              </div>
+
+              <div class="home__card card card--brown-light">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <h3 class="card__title">
+                      WE’RE READY TO <span>PLAY</span>
+                    </h3>
+
+                    <div class="card__body">
+                      <p>The Apefrenz 3D Avatars have arrived.</p>
+                      <p>
+                        Built to spec for the Metaverse of the future, our
+                        avatars are game-ready from the get go. Unlike most
+                        other 3D projects, all Zoofrenz come fully-rigged and
+                        optimized for performance. Interoperability is literally
+                        in their bones - that’s how they can get around so
+                        easily.
+                      </p>
+                      <p>
+                        The only thing limiting where your Frenz can go is your
+                        imagination.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="card__img">
+                      <img src="img/home/card-img.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card--green card--shadow-top text-center">
+                <img src="img/home/card-decor.png" alt="" class="card__decor" />
+
+                <h3 class="card__title">
+                  YOUR <span>INTEROPERABLE</span> <br />
+                  IDENTITY
+                </h3>
 
                 <div class="card__body">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam.
+                    Being a Zoofrenz holder is your ticket to realizing one of
+                    Web3’s loftiest dreams - a virtual identity that seamlessly
+                    persists across all places and spaces. Take your 2D Zoofrenz
+                    PFP out of Web2 and into our Metaverse platform using our 3D
+                    Avatars. Want to take your Zoofrenz outside with you to
+                    touch grass? We may have some merch coming down the line
+                    that can help with that...
                   </p>
                 </div>
               </div>
@@ -154,25 +229,59 @@
           </div>
         </section>
 
+        <!-- Space -->
+        <section class="zoo-space">
+          <div class="zoo-space__container container">
+            <div class="zoo-space__wrap">
+              <div class="row flex-wrap-reverse">
+                <div class="col-md-6 col-xs-7">
+                  <div class="zoo-space__img">
+                    <img src="img/home/space.jpg" alt="" />
+
+                    <img
+                      src="img/home/space-extra.png"
+                      alt=""
+                      class="zoo-space__extra"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-xs-5">
+                  <div class="zoo-space__text">
+                    <h2 class="zoo-space__title">
+                      A <span>NEW</span> WEB3 STANDARD
+                    </h2>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row justify-content-end">
+                <div class="col-md-8">
+                  <div class="card card--red">
+                    <div class="card__body">
+                      <p>
+                        The NFT space is getting more crowded by the day. With
+                        2D NFTs, what you see is basically what you get, but for
+                        3D often the devil is in the (invisible) details. As
+                        professionals, we’re often able to spot a lot of 3D red
+                        flags the untrained eye can’t spot. But we’re not
+                        interested in being the Web3 neighborhood watch. That’s
+                        why we developed our own standard for 3D NFTs so you
+                        know what to look for when making your own decisions.
+                      </p>
+                    </div>
+
+                    <a href="./zoolandia.html" class="card__btn card-btn">
+                      Learn more →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="section-faqs">
-  <img
-    src="img/home/faqs-bg-01.svg"
-    alt=""
-    class="section-faqs__bg section-faqs__bg--01"
-  />
-
-  <img
-    src="img/home/faqs-bg-02.svg"
-    alt=""
-    class="section-faqs__bg section-faqs__bg--02"
-  />
-
-  <img
-    src="img/home/faqs-bg-03.svg"
-    alt=""
-    class="section-faqs__bg section-faqs__bg--03"
-  />
-
   <div class="section-faqs__container container">
     <div class="section-faqs__wrap">
       <h2 class="section-faqs__title">FREQUENTLY ASKED QUESTIONS</h2>
@@ -335,6 +444,12 @@
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
 
 <script src="js/app.min.js"></script>
+
+<script>
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    // Your custom options
+  });
+</script>
 
     </div>
   </body>

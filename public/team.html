@@ -3,7 +3,10 @@
   <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+  />
 
   <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
 
@@ -11,6 +14,13 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
   /> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+  />
 
   <link rel="stylesheet" href="css/style.min.css" />
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
@@ -23,7 +33,7 @@
       <header class="header">
   <div class="header__container container">
     <div class="header__wrap">
-      <a href="/" class="header__logo">
+      <a href="./home.html" class="header__logo">
         <img src="img/logo.png" alt="Zoofenz" />
       </a>
 
@@ -33,13 +43,10 @@
 
           <ul>
             <li>
-              <a href="#">Features</a>
+              <a href="./zoolandia.html">Features</a>
             </li>
             <li>
-              <a href="#">Docs</a>
-            </li>
-            <li>
-              <a href="#">Merch</a>
+              <a href="./merch.html">Merch</a>
             </li>
             <li>
               <a href="#">More</a>
@@ -47,25 +54,15 @@
 
               <ul class="menu__sublist">
                 <li>
-                  <a href="#">Why</a>
+                  <a href="./why.html">Why</a>
                 </li>
                 <li>
-                  <a href="#">Team</a>
+                  <a href="./team.html">Team</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Buy</a>
-              <span class="menu__arrow"></span>
-
-              <ul class="menu__sublist">
-                <li>
-                  <a href="#">Item</a>
-                </li>
-                <li>
-                  <a href="#">Item</a>
-                </li>
-              </ul>
+              <a href="./claim.html">3D Claim</a>
             </li>
           </ul>
 
@@ -75,7 +72,7 @@
             <ul class="menu__soc soc">
               <li>
                 <a
-                  href="#"
+                  href="https://twitter.com/zoofrenzNFT"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-twitter"
@@ -83,7 +80,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/zoofrenz.eth/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-instagram"
@@ -91,7 +88,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://discord.com/invite/zoofrenznft"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-discord"
@@ -99,7 +96,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://opensea.io/collection/zoofrenz-apefrenz-2-0"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="icon-ship"
@@ -146,7 +143,13 @@
                     </p>
                   </div>
 
-                  <a href="#" class="card__btn btn">Learn more →</a>
+                  <a
+                    href="https://www.zombotcreative.com/"
+                    class="card__btn card-btn"
+                    target="_blank"
+                  >
+                    Learn more →
+                  </a>
                 </div>
               </div>
 
@@ -250,7 +253,7 @@
           </div>
         </section>
 
-        <section class="main__section main-section">
+        <section class="main__section main-section team-section">
           <div class="main-section__container container">
             <div class="main-section__wrap">
               <h2 class="main-section__title section-title section-title--blue">
@@ -258,173 +261,174 @@
               </h2>
 
               <div class="row">
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div class="collection-card">
-                    <div class="collection-card__img">
-                      <img src="img/3d/collection-card-01.png" alt="" />
-                    </div>
-
-                    <div class="collection-card__text">
-                      <h3
-                        class="collection-card__title collection-card__title--left"
-                      >
-                        ZOO<span>KEEPER</span>
-                      </h3>
-
-                      <div class="collection-card__body">
-                        <p>
-                          Alex Chu is the founder of Zombot Creative, a
-                          Taipei-based firm that’s made skins for Destiny,Spell
-                          Break, League of Legends: Wild Rift, among others. In
-                          early 2021, Alex fell in love with NFTs during an
-                          accidental encounter while day-trading meme stocks.
-                          He’s been slowly transforming into an ape ever since.
-                        </p>
+                <div class="col-md-4 col-sm-6 mb-10">
+                  <div class="collection-card-wrap">
+                    <div class="collection-card">
+                      <div class="collection-card__img">
+                        <img src="img/3d/collection-card-01.png" alt="" />
                       </div>
 
-                      <a
-                        href="#"
-                        class="collection-card__btn collection-card__btn--theme"
-                      >
-                        ZBS
-                      </a>
+                      <div class="collection-card__text">
+                        <h3
+                          class="collection-card__title collection-card__title--left"
+                        >
+                          ZOO<span>KEEPER</span>
+                        </h3>
+
+                        <div class="collection-card__body">
+                          <p>
+                            Alex Chu is the founder of Zombot Creative, a
+                            Taipei-based firm that’s made skins for
+                            Destiny,Spell Break, League of Legends: Wild Rift,
+                            among others. In early 2021, Alex fell in love with
+                            NFTs during an accidental encounter while
+                            day-trading meme stocks. He’s been slowly
+                            transforming into an ape ever since.
+                          </p>
+                        </div>
+                      </div>
                     </div>
+
+                    <a
+                      href="#"
+                      class="collection-card__btn collection-card__btn--theme"
+                    >
+                      MetaOutfitter
+                    </a>
                   </div>
                 </div>
 
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div class="collection-card collection-card--green">
-                    <div class="collection-card__img">
-                      <img src="img/3d/collection-card-02.png" alt="" />
-                    </div>
-
-                    <div class="collection-card__text">
-                      <h3
-                        class="collection-card__title collection-card__title--left"
-                      >
-                        ZOO<span>KEEPER</span>
-                      </h3>
-
-                      <div class="collection-card__body">
-                        <p>
-                          Alex Chu is the founder of Zombot Creative, a
-                          Taipei-based firm that’s made skins for Destiny,Spell
-                          Break, League of Legends: Wild Rift, among others. In
-                          early 2021, Alex fell in love with NFTs during an
-                          accidental encounter while day-trading meme stocks.
-                          He’s been slowly transforming into an ape ever since.
-                        </p>
+                <div class="col-md-4 col-sm-6 mb-10">
+                  <div class="collection-card-wrap collection-card-wrap--green">
+                    <div class="collection-card collection-card--green">
+                      <div class="collection-card__img">
+                        <img src="img/3d/collection-card-02.png" alt="" />
                       </div>
 
-                      <a
-                        href="#"
-                        class="collection-card__btn collection-card__btn--theme"
-                      >
-                        Obula
-                      </a>
+                      <div class="collection-card__text">
+                        <h3
+                          class="collection-card__title collection-card__title--left"
+                        >
+                          ZOO<span>KEEPER</span>
+                        </h3>
+
+                        <div class="collection-card__body">
+                          <p>
+                            Obula is a game industry veteran with over 13 years
+                            of dev experience. He’s helped studios build
+                            different games ranging from 4x strategy games to
+                            fighting games. He was previously the Studio lead at
+                            AltPlus and CTO at Zombot. In a past life, Obula was
+                            an amateur Street Fighter 4 competitor.
+                          </p>
+                        </div>
+                      </div>
                     </div>
+
+                    <a
+                      href="#"
+                      class="collection-card__btn collection-card__btn--theme"
+                    >
+                      Obula
+                    </a>
                   </div>
                 </div>
 
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div class="collection-card collection-card--beige">
-                    <div class="collection-card__img">
-                      <img src="img/3d/collection-card-03.png" alt="" />
-                    </div>
-
-                    <div class="collection-card__text">
-                      <h3
-                        class="collection-card__title collection-card__title--left"
-                      >
-                        ZOO<span>KEEPER</span>
-                      </h3>
-
-                      <div class="collection-card__body">
-                        <p>
-                          Alex Chu is the founder of Zombot Creative, a
-                          Taipei-based firm that’s made skins for Destiny,Spell
-                          Break, League of Legends: Wild Rift, among others. In
-                          early 2021, Alex fell in love with NFTs during an
-                          accidental encounter while day-trading meme stocks.
-                          He’s been slowly transforming into an ape ever since.
-                        </p>
+                <div class="col-md-4 col-sm-6 mb-10">
+                  <div class="collection-card-wrap collection-card-wrap--beige">
+                    <div class="collection-card collection-card--beige">
+                      <div class="collection-card__img">
+                        <img src="img/3d/collection-card-03.png" alt="" />
                       </div>
 
-                      <a
-                        href="#"
-                        class="collection-card__btn collection-card__btn--theme"
-                      >
-                        May
-                      </a>
+                      <div class="collection-card__text">
+                        <h3
+                          class="collection-card__title collection-card__title--left"
+                        >
+                          ZOO<span>KEEPER</span>
+                        </h3>
+
+                        <div class="collection-card__body">
+                          <p>
+                            May Han currently works as the Design Producer at
+                            Zombot Creative. She’s worked on games such as
+                            Everedale and League of Legends: Wild Rift. Her
+                            dream is to have a Ragdoll cat named NiaNia.
+                          </p>
+                        </div>
+                      </div>
                     </div>
+
+                    <a
+                      href="#"
+                      class="collection-card__btn collection-card__btn--theme"
+                    >
+                      niania
+                    </a>
                   </div>
                 </div>
 
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div class="collection-card collection-card--pink">
-                    <div class="collection-card__img">
-                      <img src="img/3d/collection-card-04.png" alt="" />
-                    </div>
-
-                    <div class="collection-card__text">
-                      <h3
-                        class="collection-card__title collection-card__title--left"
-                      >
-                        ZOO<span>KEEPER</span>
-                      </h3>
-
-                      <div class="collection-card__body">
-                        <p>
-                          Alex Chu is the founder of Zombot Creative, a
-                          Taipei-based firm that’s made skins for Destiny,Spell
-                          Break, League of Legends: Wild Rift, among others. In
-                          early 2021, Alex fell in love with NFTs during an
-                          accidental encounter while day-trading meme stocks.
-                          He’s been slowly transforming into an ape ever since.
-                        </p>
+                <div class="col-md-4 col-sm-6 mb-10">
+                  <div class="collection-card-wrap collection-card-wrap--pink">
+                    <div class="collection-card collection-card--pink">
+                      <div class="collection-card__img">
+                        <img src="img/3d/collection-card-05.png" alt="" />
                       </div>
 
-                      <a
-                        href="#"
-                        class="collection-card__btn collection-card__btn--theme"
-                      >
-                        Ryan
-                      </a>
+                      <div class="collection-card__text">
+                        <h3
+                          class="collection-card__title collection-card__title--left"
+                        >
+                          ZOO<span>KEEPER</span>
+                        </h3>
+
+                        <div class="collection-card__body">
+                          <p>
+                            Mark Chu is a Product Manager with a great love of
+                            video games and immersive storytelling. In his spare
+                            time, he designs ARGs and puzzles for escape rooms.
+                          </p>
+                        </div>
+                      </div>
                     </div>
+
+                    <a
+                      href="#"
+                      class="collection-card__btn collection-card__btn--theme"
+                    >
+                      Monkixote
+                    </a>
                   </div>
                 </div>
 
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div class="collection-card collection-card--blue">
-                    <div class="collection-card__img">
-                      <img src="img/3d/collection-card-05.png" alt="" />
-                    </div>
-
-                    <div class="collection-card__text">
-                      <h3
-                        class="collection-card__title collection-card__title--left"
-                      >
-                        ZOO<span>KEEPER</span>
-                      </h3>
-
-                      <div class="collection-card__body">
-                        <p>
-                          Alex Chu is the founder of Zombot Creative, a
-                          Taipei-based firm that’s made skins for Destiny,Spell
-                          Break, League of Legends: Wild Rift, among others. In
-                          early 2021, Alex fell in love with NFTs during an
-                          accidental encounter while day-trading meme stocks.
-                          He’s been slowly transforming into an ape ever since.
-                        </p>
+                <div class="col-md-4 col-sm-6 mb-10">
+                  <div class="collection-card-wrap collection-card-wrap--blue">
+                    <div class="collection-card collection-card--blue">
+                      <div class="collection-card__img">
+                        <img src="img/3d/collection-card-04.png" alt="" />
                       </div>
 
-                      <a
-                        href="#"
-                        class="collection-card__btn collection-card__btn--theme"
-                      >
-                        Monkixote
-                      </a>
+                      <div class="collection-card__text">
+                        <h3
+                          class="collection-card__title collection-card__title--left"
+                        >
+                          ZOO<span>KEEPER</span>
+                        </h3>
+
+                        <div class="collection-card__body">
+                          <p>
+                            DARTΞR is a weirdo who's career begin from gaming industry through as a real estate broker. He is also an amateur dart player, but almost retreat from the circle since step in the world of web3.0.
+                          </p>
+                        </div>
+                      </div>
                     </div>
+
+                    <a
+                      href="#"
+                      class="collection-card__btn collection-card__btn--theme"
+                    >
+                      DARTER
+                    </a>
                   </div>
                 </div>
               </div>
@@ -497,6 +501,12 @@
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
 
 <script src="js/app.min.js"></script>
+
+<script>
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    // Your custom options
+  });
+</script>
 
     </div>
   </body>
