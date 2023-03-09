@@ -10,13 +10,13 @@
         <nav class="footer__nav">
           <ul class="footer__menu">
             <li>
-              <a href="#">Features</a>
+              <router-link to="/Features">Features</router-link>
             </li>
             <li>
-              <a href="#">Docs</a>
+              <router-link to="/">Docs</router-link>
             </li>
             <li>
-              <a href="#">Merch</a>
+              <router-link to="/Merch">Merch</router-link>
             </li>
           </ul>
         </nav>

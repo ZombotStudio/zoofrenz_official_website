@@ -1,21 +1,18 @@
 <template>
-  <div>
-      <Header></Header>
-      <Claim></Claim>
-      <Footer></Footer>
-    </div>
+  <div class="wrapper">
+      <Header />
+      <router-view></router-view>
+      <Footer />
+  </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Claim from './components/Claim.vue'
-import Footer from './components/Footer.vue'
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
-  name: 'App',
   components: {
     Header,
-    Claim,
     Footer
   }
 }
