@@ -56,7 +56,7 @@ var http = {
     };
     try {
       const response = await axios.post(   
-        "http://54.169.12.15:30001/api/v1/auth/vrm/get",
+        "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/vrm/get",
         requestBody,
         { headers }
       );
@@ -67,6 +67,20 @@ var http = {
       console.error(error);
     }
   },
+
+  async getEditionIdList(tokenIdList)
+  {
+    try {
+      const response = await axios.get(     
+        "https://dev-third-space-api.zoofrenz.com:30010/api/v1/revealedId/get?tokenId="+tokenIdList,        
+      );
+      console.log("mes = " ,response.data);    
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
   async verifySignedMessage(walletAddress, message) {
     const requestBody = {
       address: walletAddress,
@@ -80,7 +94,7 @@ var http = {
     };
     try {
       const response = await axios.post(
-        "http://54.169.12.15:30001/api/v1/auth/web3/sign/message/verify",
+        "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/web3/sign/message/verify",
         requestBody,
         { headers }
       );
@@ -104,7 +118,7 @@ var http = {
     };
     try {
       const response = await axios.post(
-        "http://54.169.12.15:30001/api/v1/auth/web3/sign/message/new",
+        "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/web3/sign/message/new",
         requestBody,
         { headers }
       );

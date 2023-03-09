@@ -94,25 +94,12 @@ import Web3 from "../web3/web3";
 export default {
   name: "ClaimView",
   methods: {
-    handleConnectClick: function (num1, num2) {
-      alert(num1 + num2);
-    },
     connectWallet: function () {
       Web3.connectWallet();
-      // web3.handleConnectClick(1,2);
     },
-    ListAllZoofrenzToken: function () {
-      Web3.ListAllZoofrenzToken();
-    },
-    BalanceOfZoofrenzToken: function () {
-      // alert(2);
-      Web3.RequestSign();
-      // Web3.ListTokenIdLIst();
-      // 
-      // Web3.ListAllZoofrenzToken();
-      // Web3.ZoofrenzTokenTokenOfOwnerByIndex();
-    },
-    
+    // ListAllZoofrenzToken: function () {
+    //   Web3.ListAllZoofrenzToken();
+    // },       
   },
 };
 </script>

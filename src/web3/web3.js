@@ -14,10 +14,71 @@ import { ZooFrenzToken } from "./ZooFrenzToken";
 
 import http from "../api/http";
 
-const tokenIdList = [];
+
+const nftList = [];
+
+// window.vrmItems = [
+//   {
+//     id: "#5095",
+//     imgUrl:
+//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
+//       "5095" +
+//       ".png",
+//     tokenId: "8695",
+//     editionId: "5095",
+//   },
+//   {
+//     id: "#1",
+//     imgUrl:
+//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
+//       "1" +
+//       ".png",
+//     tokenId: "1",
+//     editionId: "1",
+//   },
+//   {
+//     id: "#5095",
+//     imgUrl:
+//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
+//       "5095" +
+//       ".png",
+//     tokenId: "8695",
+//     editionId: "5095",
+//   },
+//   {
+//     id: "#1",
+//     imgUrl:
+//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
+//       "1" +
+//       ".png",
+//     tokenId: "1",
+//     editionId: "1",
+//   },
+//   {
+//     id: "#5095",
+//     imgUrl:
+//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
+//       "5095" +
+//       ".png",
+//     tokenId: "8695",
+//     editionId: "5095",
+//   },
+//   {
+//     id: "#1",
+//     imgUrl:
+//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
+//       "1" +
+//       ".png",
+//     tokenId: "1",
+//     editionId: "1",
+//   },
+// ];
+window.vrmItems = [];
 
 var Web3Manager = {
   async connectWallet() {
+    window.vrmItems = [];
+    this.vrmItems = window.vrmItems.slice();
     const MAINNET_RPC_URL =
       "https://mainnet.infura.io/v3/b5eaf001ec414c16a70fc397ffa2980d";
 
@@ -86,78 +147,91 @@ var Web3Manager = {
       this.walletAddress = String(this.wallets[0].accounts[0].address);
 
       var responseData = await http.requestSign(this.walletAddress);
-      
-      this.SignMessage(responseData);
-      // this.walletAddress = "0xc9c76085b28afe42f1670b2E512FCA8aC6Ad91c2";
+
+      await this.SignMessage(responseData);
+
+      await this.ListAllZoofrenzToken();
+
+      this.ListTokenIdLIst();
     }
   },
-  ListAllZoofrenzToken() {
-    this.ListAwakenedZoofrenzToken();
-    this.ListZoofrenzToken();
+  async ListAllZoofrenzToken() {
+    await this.ListAwakenedZoofrenzToken();
+    await this.ListZoofrenzToken();
+    console.log("Done logging");
   },
 
-  ListAwakenedZoofrenzToken() {
-    // const listNFTsPromise = AwakenedZoofrenz.tokensOfOwner(this.walletAddress);
+  async ListAwakenedZoofrenzToken() {
+    try {
+      const nfts = await AwakenedZoofrenz.tokensOfOwner(this.walletAddress);
+      const tokendIdString = String(nfts);
+      const nftIdPair = await http.getEditionIdList(tokendIdString);
 
-    const listNFTsPromise = AwakenedZoofrenz.tokensOfOwner(
-      "0x43a2e4bB618766FFd175330E0De2927D29e86be1"
-    );
+      for (let key in nftIdPair) {
+        nftList.push({ tokenId: key, editionId: nftIdPair[key] });
+      }
 
-    listNFTsPromise.then((nfts) => {
-      const nftsString = String(nfts);
-      const nftArray = nftsString.split(",");
-      nftArray.forEach((element) => {
-        tokenIdList.push(element);
-      });
+      // for (var i = 0; i < tokenIdArray.length; i++) {
+      //   nftList.push({ tokenId: tokenIdArray[i], editionId:editionIdArray[i] });
+      // }
+
       console.log("Done ListAwakenedZoofrenzToken");
-    });
+    } catch (error) {
+      console.error(error);
+    }
   },
-  ListZoofrenzToken() {
+
+  async ListZoofrenzToken() {
     const balanceOfZoofrenzTokenPromise = ZooFrenzToken.balanceOf(
       this.walletAddress
     );
+    const bal = await balanceOfZoofrenzTokenPromise;
+    const msg = String(bal);
+    console.log(msg);
 
-    balanceOfZoofrenzTokenPromise.then((bal) => {
-      const msg = String(bal);
-      console.log(msg);
+    for (var i = 0; i < bal; i++) {
+      const ZoofrenzTokenTokenOfOwnerByIndexPromise =
+        ZooFrenzToken.tokenOfOwnerByIndex(this.walletAddress, i);
+      const token = await ZoofrenzTokenTokenOfOwnerByIndexPromise;
+      const tokenId = String(token);
 
-      for (var i = 0; i < bal; i++) {
-        const ZoofrenzTokenTokenOfOwnerByIndexPromise =
-          ZooFrenzToken.tokenOfOwnerByIndex(this.walletAddress, i);
-
-        ZoofrenzTokenTokenOfOwnerByIndexPromise.then((bal) => {
-          const msg = String(bal);
-          // console.log(msg);
-          tokenIdList.push(msg);
-          console.log("done " + i);
-        });
-      }
-    });
+      nftList.push({ tokenId: tokenId, editionId: tokenId }); 
+    }
+    
   },
   ListTokenIdLIst() {
-    tokenIdList.forEach((element) => {
-      console.log(element);
+    console.log("ListTokenIdLIst");
+
+    window.vrmItems = [];
+    nftList.forEach((element) => {
+      window.vrmItems.push({
+        id: "#" + element.editionId,
+        imgUrl:
+          "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
+          element.editionId +
+          ".png",
+        tokenId: element.tokenId,
+        editionId: element.editionId,
+      });      
     });
-  },  
-  SignMessage(mes) {
-    var signaturePromise = this.signer.signMessage(mes);
+  
+    console.log(window.vrmItems);
+    console.log("reloadPage");
+    // const event = new Event("my-custom-event");
+    // window.dispatchEvent(event);
+    
+  },
+  async SignMessage(mes) {
+    try {
+      const signature = await this.signer.signMessage(mes);
+      console.log("accessToken");
+      console.log(signature);
 
-    signaturePromise.then(
-      (msg) => {
-        console.log("accesstoken");        
-        console.log(msg);
-
-        http.verifySignedMessage(this.walletAddress,msg);
-      },
-      (msg) => {
-        console.log("error");
-        console.log(msg);
-
-        // if (onMessageSigned) {
-        //   Module["dynCall_vii"](onMessageSigned, false, msg);
-        // }
-      }
-    );
+      await http.verifySignedMessage(this.walletAddress, signature);
+    } catch (error) {
+      console.log("error");
+      console.log(error);
+    }
   },
 };
 

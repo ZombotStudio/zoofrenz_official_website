@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli --profile vue-deployer s3 sync ./dist s3://zoofrenz-official-website --delete"
   },
   "dependencies": {
     "@babel/plugin-proposal-private-methods": "^7.18.6",
