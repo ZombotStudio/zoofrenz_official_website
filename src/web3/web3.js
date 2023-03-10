@@ -14,8 +14,9 @@ import { ZooFrenzToken } from "./ZooFrenzToken";
 
 import http from "../api/http";
 
-
 const nftList = [];
+
+window.vrmItems = [];
 
 // window.vrmItems = [
 //   {
@@ -73,12 +74,11 @@ const nftList = [];
 //     editionId: "1",
 //   },
 // ];
-window.vrmItems = [];
+
 
 var Web3Manager = {
   async connectWallet() {
     window.vrmItems = [];
-    this.vrmItems = window.vrmItems.slice();
     const MAINNET_RPC_URL =
       "https://mainnet.infura.io/v3/b5eaf001ec414c16a70fc397ffa2980d";
 
@@ -213,12 +213,15 @@ var Web3Manager = {
         tokenId: element.tokenId,
         editionId: element.editionId,
       });      
+
+      const event = new Event("render-vrm-event");
+      window.dispatchEvent(event);
     });
   
     console.log(window.vrmItems);
-    console.log("reloadPage");
-    // const event = new Event("my-custom-event");
-    // window.dispatchEvent(event);
+    console.log("reloadPage");  
+    // const event = new CustomEvent('my-event');
+    // // document.dispatchEvent(event);
     
   },
   async SignMessage(mes) {

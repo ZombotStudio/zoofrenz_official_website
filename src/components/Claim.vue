@@ -21,10 +21,10 @@
     <section class="main__section main-section">
       <div class="main-section__container container">
         <div class="main-section__wrap">
-          <h2 class="main-section__title section-title">Your Collection</h2>        
+          <h2 class="main-section__title section-title">Your Collection</h2>
           <div class="row">
             <div
-              v-for="(item, index) in mappedVrmItems"
+              v-for="(item, index) in vrmItems"
               :key="index"
               class="col-md-3 col-sm-6 mb-4"
             >
@@ -57,45 +57,33 @@ import http from "../api/http";
 
 export default {
   name: "ClaimPage",
-  data() {
-    return {
-      vrmItems: [],
-    };
-  },
 
   methods: {
-    a: function ()
-    {
-      console.log("sss");
-      this.$forceUpdate();     
+    renderVRM: function () {
+      console.log("renderVRM");
+      this.vrmItems = window.vrmItems;
     },
+
     downloadVRM: function (tokenId) {
       console.log(web3.walletAddress);
       console.log(tokenId);
-      http.requestVRMURL(web3.walletAddress,tokenId);
-    },    
-  },
-
-  computed: {
-    mappedVrmItems: function () {
-      return this.vrmItems.map(function (item) {
-        return {
-          id: item.id,
-          imgUrl: item.imgUrl,
-          tokenId: item.tokenId,
-        };
-      });
+      http.requestVRMURL(web3.walletAddress, tokenId);
     },
   },
-  created() {
-    this.vrmItems = window.vrmItems.slice();
-  },
 
+  data() {
+    return {
+      vrmItems: window.vrmItems,
+    };
+  },
+  mounted() {
+    console.log("mounted")  ;  
+    this.renderVRM();
+    window.addEventListener("render-vrm-event", this.renderVRM);
+  },
   beforeUnmount() {
-    // window.removeEventListener("my-custom-event", this.a);
-    // remove the watcher when the component is destroyed
+    window.removeEventListener("render-vrm-event", this.renderVRM);
   },
-
 };
 </script>
 
