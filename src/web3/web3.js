@@ -1,5 +1,4 @@
 import Onboard from "@web3-onboard/core";
-
 import injectedModule from "@web3-onboard/injected-wallets";
 import walletConnectModule from "@web3-onboard/walletconnect";
 import coinbaseWalletModule from "@web3-onboard/coinbase";
@@ -7,6 +6,7 @@ import ledgerModule from "@web3-onboard/ledger";
 
 import { ethers } from "ethers";
 import Web3 from "web3";
+
 import { AwakenedZoofrenz } from "./AwakenedZoofrenz";
 import { ZoofrenzFirstClassPass } from "./ZoofrenzFirstClassPass";
 import { FrenshipToken } from "./FrenshipToken";
@@ -17,64 +17,6 @@ import http from "../api/http";
 const nftList = [];
 
 window.vrmItems = JSON.parse(localStorage.getItem("vrmItems"));
-// window.vrmItems = [];
-
-// window.vrmItems = [
-//   {
-//     id: "#5095",
-//     imgUrl:
-//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
-//       "5095" +
-//       ".png",
-//     tokenId: "8695",
-//     editionId: "5095",
-//   },
-//   {
-//     id: "#1",
-//     imgUrl:
-//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
-//       "1" +
-//       ".png",
-//     tokenId: "1",
-//     editionId: "1",
-//   },
-//   {
-//     id: "#5095",
-//     imgUrl:
-//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
-//       "5095" +
-//       ".png",
-//     tokenId: "8695",
-//     editionId: "5095",
-//   },
-//   {
-//     id: "#1",
-//     imgUrl:
-//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
-//       "1" +
-//       ".png",
-//     tokenId: "1",
-//     editionId: "1",
-//   },
-//   {
-//     id: "#5095",
-//     imgUrl:
-//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
-//       "5095" +
-//       ".png",
-//     tokenId: "8695",
-//     editionId: "5095",
-//   },
-//   {
-//     id: "#1",
-//     imgUrl:
-//       "https://zoofrenz-assets-singapore.s3.ap-southeast-1.amazonaws.com/nft-images-256x256/" +
-//       "1" +
-//       ".png",
-//     tokenId: "1",
-//     editionId: "1",
-//   },
-// ];
 
 var Web3Manager = {
   async connectWallet() {
@@ -132,6 +74,8 @@ var Web3Manager = {
     this.wallets = await this.onboard.connectWallet();
 
     if (this.wallets.length > 0) {
+      this.UpdateBlocknativeModalPos();
+      
       const ethersProvider = new ethers.providers.Web3Provider(
         this.wallets[0].provider,
         "any"
@@ -219,6 +163,24 @@ var Web3Manager = {
       console.log("error");
       console.log(error);
     }
+  },
+  UpdateBlocknativeModalPos() {
+    const elem = document.getElementsByTagName("onboard-v2");
+    if (!elem || !elem.item(0)) return;
+    const childNodes = Array.from(elem.item(0).shadowRoot.childNodes);
+    childNodes.forEach((childNode) => {
+      if (childNode.nodeName === "DIV") {
+        if (
+          childNode.className.indexOf("container") >= 0 &&
+          childNode.className.indexOf("svelte-") >= 0
+        ) {
+          childNode.style = "bottom: 1em; right: 0; width: auto;";
+          window.setTimeout(() => {
+            childNode.style = "bottom: 1em; right: 0; width: auto;";
+          }, 100);
+        }
+      }
+    });
   },
 };
 
