@@ -74,7 +74,7 @@ var http = {
       const response = await axios.get(     
         "https://dev-third-space-api.zoofrenz.com:30010/api/v1/revealedId/get?tokenId="+tokenIdList,        
       );
-      console.log("mes = " ,response.data);    
+
       return response.data;
     } catch (error) {
       console.error(error);
@@ -98,7 +98,7 @@ var http = {
         requestBody,
         { headers }
       );
-      console.log("mes = " ,response.data);
+    
       access_token = response.data.access_token;
       return response.data.access_token;
     } catch (error) {
@@ -122,7 +122,7 @@ var http = {
         requestBody,
         { headers }
       );
-      console.log("mes = " ,response.data.message);
+      
       return response.data.message;
     } catch (error) {
       console.error(error);
@@ -139,7 +139,7 @@ var http = {
         },
         responseType: "arraybuffer",
       });
-      console.log("success1");
+   
       return response;
     } catch (error) {
       console.error("error");

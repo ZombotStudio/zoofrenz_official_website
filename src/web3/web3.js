@@ -16,7 +16,8 @@ import http from "../api/http";
 
 const nftList = [];
 
-window.vrmItems = [];
+window.vrmItems = JSON.parse(localStorage.getItem("vrmItems"));
+// window.vrmItems = [];
 
 // window.vrmItems = [
 //   {
@@ -75,10 +76,13 @@ window.vrmItems = [];
 //   },
 // ];
 
-
 var Web3Manager = {
   async connectWallet() {
     window.vrmItems = [];
+    localStorage.setItem("vrmItems", JSON.stringify(window.vrmItems));
+    const event = new Event("render-vrm-event");
+    window.dispatchEvent(event);
+
     const MAINNET_RPC_URL =
       "https://mainnet.infura.io/v3/b5eaf001ec414c16a70fc397ffa2980d";
 
@@ -128,8 +132,6 @@ var Web3Manager = {
     this.wallets = await this.onboard.connectWallet();
 
     if (this.wallets.length > 0) {
-      console.log(String(this.wallets[0].accounts[0].address));
-
       const ethersProvider = new ethers.providers.Web3Provider(
         this.wallets[0].provider,
         "any"
@@ -158,7 +160,6 @@ var Web3Manager = {
   async ListAllZoofrenzToken() {
     await this.ListAwakenedZoofrenzToken();
     await this.ListZoofrenzToken();
-    console.log("Done logging");
   },
 
   async ListAwakenedZoofrenzToken() {
@@ -170,12 +171,6 @@ var Web3Manager = {
       for (let key in nftIdPair) {
         nftList.push({ tokenId: key, editionId: nftIdPair[key] });
       }
-
-      // for (var i = 0; i < tokenIdArray.length; i++) {
-      //   nftList.push({ tokenId: tokenIdArray[i], editionId:editionIdArray[i] });
-      // }
-
-      console.log("Done ListAwakenedZoofrenzToken");
     } catch (error) {
       console.error(error);
     }
@@ -186,8 +181,6 @@ var Web3Manager = {
       this.walletAddress
     );
     const bal = await balanceOfZoofrenzTokenPromise;
-    const msg = String(bal);
-    console.log(msg);
 
     for (var i = 0; i < bal; i++) {
       const ZoofrenzTokenTokenOfOwnerByIndexPromise =
@@ -195,13 +188,10 @@ var Web3Manager = {
       const token = await ZoofrenzTokenTokenOfOwnerByIndexPromise;
       const tokenId = String(token);
 
-      nftList.push({ tokenId: tokenId, editionId: tokenId }); 
+      nftList.push({ tokenId: tokenId, editionId: tokenId });
     }
-    
   },
   ListTokenIdLIst() {
-    console.log("ListTokenIdLIst");
-
     window.vrmItems = [];
     nftList.forEach((element) => {
       window.vrmItems.push({
@@ -212,23 +202,17 @@ var Web3Manager = {
           ".png",
         tokenId: element.tokenId,
         editionId: element.editionId,
-      });      
+      });
 
       const event = new Event("render-vrm-event");
       window.dispatchEvent(event);
     });
-  
-    console.log(window.vrmItems);
-    console.log("reloadPage");  
-    // const event = new CustomEvent('my-event');
-    // // document.dispatchEvent(event);
-    
+
+    localStorage.setItem("vrmItems", JSON.stringify(window.vrmItems));
   },
   async SignMessage(mes) {
     try {
       const signature = await this.signer.signMessage(mes);
-      console.log("accessToken");
-      console.log(signature);
 
       await http.verifySignedMessage(this.walletAddress, signature);
     } catch (error) {

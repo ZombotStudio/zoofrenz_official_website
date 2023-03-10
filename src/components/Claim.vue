@@ -59,8 +59,7 @@ export default {
   name: "ClaimPage",
 
   methods: {
-    renderVRM: function () {
-      console.log("renderVRM");
+    renderVRM: function () {         
       this.vrmItems = window.vrmItems;
     },
 
@@ -76,8 +75,7 @@ export default {
       vrmItems: window.vrmItems,
     };
   },
-  mounted() {
-    console.log("mounted")  ;  
+  mounted() {     
     this.renderVRM();
     window.addEventListener("render-vrm-event", this.renderVRM);
   },
