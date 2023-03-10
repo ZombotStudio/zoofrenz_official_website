@@ -7,6 +7,7 @@ import Why from "./components/Why.vue";
 import Team from "./components/Team.vue";
 
 const routes = [
+    { path: '/index.html', component: Main },
     { path: '/', component: Main },
     { path: '/Claim', component: Claim },
     { path: '/Features', component: Features },
