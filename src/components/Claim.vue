@@ -76,6 +76,8 @@ export default {
   mounted() {     
     this.renderVRM();
     window.addEventListener("render-vrm-event", this.renderVRM);
+    document.body.className = 'pc webp';
+    
   },
   beforeUnmount() {
     window.removeEventListener("render-vrm-event", this.renderVRM);
