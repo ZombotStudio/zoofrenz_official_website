@@ -14,19 +14,19 @@ import { ZooFrenzToken } from "./ZooFrenzToken";
 
 import http from "../api/http";
 
-const nftList = [];
-
+window.nftList = [];
 window.vrmItems = JSON.parse(localStorage.getItem("vrmItems"));
 
 var Web3Manager = {
   async connectWallet() {
     window.vrmItems = [];
+    window.nftList = [];
     localStorage.setItem("vrmItems", JSON.stringify(window.vrmItems));
     const event = new Event("render-vrm-event");
     window.dispatchEvent(event);
 
     const MAINNET_RPC_URL =
-      "https://mainnet.infura.io/v3/b5eaf001ec414c16a70fc397ffa2980d";
+      "https://mainnet.infura.io/v3/28c6a50585b542a2a30d7dc9c5e3bfef";
 
     const injected = injectedModule();
 
@@ -74,8 +74,13 @@ var Web3Manager = {
     this.wallets = await this.onboard.connectWallet();
 
     if (this.wallets.length > 0) {
+      window.walletConnected = true;
+
+      const event = new Event("wallet-connect-event");
+      window.dispatchEvent(event);
+
       this.UpdateBlocknativeModalPos();
-      
+
       const ethersProvider = new ethers.providers.Web3Provider(
         this.wallets[0].provider,
         "any"
@@ -100,6 +105,22 @@ var Web3Manager = {
 
       this.ListTokenIdLIst();
     }
+
+    const state = this.onboard.state.select();
+    state.subscribe((update) => {
+
+      if (update.wallets.length == 0) {
+        window.walletConnected = false;
+
+        const event = new Event("wallet-connect-event");
+        window.dispatchEvent(event);
+        window.vrmItems = [];
+        window.nftList = [];
+        localStorage.setItem("vrmItems", JSON.stringify(window.vrmItems));
+        const event2 = new Event("render-vrm-event");
+        window.dispatchEvent(event2);
+      }
+    });
   },
   async ListAllZoofrenzToken() {
     await this.ListAwakenedZoofrenzToken();
@@ -113,7 +134,7 @@ var Web3Manager = {
       const nftIdPair = await http.getEditionIdList(tokendIdString);
 
       for (let key in nftIdPair) {
-        nftList.push({ tokenId: key, editionId: nftIdPair[key] });
+        window.nftList.push({ tokenId: key, editionId: nftIdPair[key] });
       }
     } catch (error) {
       console.error(error);
@@ -132,12 +153,13 @@ var Web3Manager = {
       const token = await ZoofrenzTokenTokenOfOwnerByIndexPromise;
       const tokenId = String(token);
 
-      nftList.push({ tokenId: tokenId, editionId: tokenId });
+      window.nftList.push({ tokenId: tokenId, editionId: tokenId });
     }
   },
   ListTokenIdLIst() {
     window.vrmItems = [];
-    nftList.forEach((element) => {
+
+    window.nftList.forEach((element) => {
       window.vrmItems.push({
         id: "#" + element.editionId,
         imgUrl:

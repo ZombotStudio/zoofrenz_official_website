@@ -59,13 +59,11 @@ export default {
   name: "ClaimPage",
 
   methods: {
-    renderVRM: function () {         
+    renderVRM: function () {        
       this.vrmItems = window.vrmItems;
     },
 
-    downloadVRM: function (tokenId) {
-      console.log(web3.walletAddress);
-      console.log(tokenId);
+    downloadVRM: function (tokenId) {      
       http.requestVRMURL(web3.walletAddress, tokenId);
     },
   },
