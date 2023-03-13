@@ -39,8 +39,7 @@
                 >Connect</a
               >
               <a v-else v-on:click="connectWallet()" style="visibility: hidden" class="connected_btn">Connected</a>
-              <!-- <a v-on:click="connectWallet()" class="btn">Connect</a>
-              <a v-on:click="connectWallet()" style="visibility: hidden" class="connected_btn">Connected</a> -->
+
               <ul class="menu__soc soc">
                 <li>
                   <a
@@ -98,7 +97,7 @@ import Web3 from "../web3/web3";
 export default {
   name: "ClaimView",
   methods: {
-    updateWalletConnected: function () {          
+    updateWalletConnected: function () {     
       this.walletConnected = window.walletConnected;
     }, 
     connectWallet: function () {      
@@ -110,8 +109,10 @@ export default {
       walletConnected: window.walletConnected,
     };
   },
-  mounted() {     
-    Web3.WalletCheck();    
+  mounted() {         
+    window.walletConnected = true;
+    this.updateWalletConnected();
+    Web3.initOnboard();    
     this.updateWalletConnected();
     window.addEventListener("wallet-connect-event", this.updateWalletConnected);
   },

@@ -1,21 +1,6 @@
 import CryptoJS from "crypto-js";
 import axios from "axios";
-// import { Buffer } from 'buffer';
-
-// const {
-//   RequestSignedMessageParameters,
-//   RequestSignedMessageResponse,
-// } = require("../proto/RequestSignedMessage_pb");
-
-// const proto = require("../proto/RequestSignedMessage_pb");
-// const {
-//   VerifySignedMessageParameters,
-//   VerifySignedMessageResponse,
-// } = require("../proto/VerifySignedMessage_pb");
-// const {
-//   VrmUrlaPrameters,
-//   // VrmUrlResponse,
-// } = require("../proto/VrmUrl_pb");
+import web3 from "../web3/web3.js";
 
 const payload = {
   iss: "Zoofrenz",
@@ -24,8 +9,10 @@ const payload = {
   client_version: "0.0.3",
   client_bundle_id: "com.zoofrenz.ThirdSpace",
 };
+
 const secretKey = "46d36f16692f1b3b6f1165a4478c4b90";
 
+//JWT
 // Encode the JWT header and payload using base64
 const header = btoa(JSON.stringify({ typ: "JWT", alg: "HS256" }));
 const encodedPayload = btoa(JSON.stringify(payload));
@@ -39,14 +26,12 @@ const signedToken = `${encodedToken}.${CryptoJS.enc.Base64url.stringify(
   signature
 )}`;
 
-var access_token = "";
+var access_token = localStorage.getItem("access_token");
 var http = {
-  
   async requestVRMURL(walletAddress, tokenId) {
-
     const requestBody = {
       address: walletAddress,
-      token_id:tokenId,
+      token_id: tokenId,
     };
 
     const headers = {
@@ -55,24 +40,35 @@ var http = {
       "ZF-Access-Token": access_token,
     };
     try {
-      const response = await axios.post(   
+      const response = await axios.post(
         "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/vrm/get",
         requestBody,
         { headers }
       );
-      console.log("mes = " ,response.data);
+      console.log("mes = ", response.data);
       open(response.data.url);
       return response.data;
-    } catch (error) {
-      console.error(error);
+    } catch (error) { 
+      console.log(error.response.status);   
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        if(error.response.status == 400 || error.response.status == 401 || error.response.status == 500)
+        {      
+          var responseData = await this.requestSign(walletAddress);
+           await web3.signMessage(responseData);
+
+           this.requestVRMURL(walletAddress,tokenId); 
+        }
+      }       
     }
   },
 
-  async getEditionIdList(tokenIdList)
-  {
+  async getEditionIdList(tokenIdList) {
     try {
-      const response = await axios.get(     
-        "https://dev-third-space-api.zoofrenz.com:30010/api/v1/revealedId/get?tokenId="+tokenIdList,        
+      const response = await axios.get(
+        "https://dev-third-space-api.zoofrenz.com:30010/api/v1/revealedId/get?tokenId=" +
+          tokenIdList
       );
 
       return response.data;
@@ -84,7 +80,7 @@ var http = {
   async verifySignedMessage(walletAddress, message) {
     const requestBody = {
       address: walletAddress,
-      message:message,
+      message: message,
     };
 
     const headers = {
@@ -98,8 +94,11 @@ var http = {
         requestBody,
         { headers }
       );
-    
+
       access_token = response.data.access_token;
+
+      localStorage.setItem("access_token", access_token);
+
       return response.data.access_token;
     } catch (error) {
       console.error(error);
@@ -109,8 +108,7 @@ var http = {
   async requestSign(walletAddress) {
     const requestBody = {
       address: walletAddress,
-    };
-
+    };    
     const headers = {
       "Content-Type": "application/x-www-form-urlencoded",
       "ZF-Client-Token": signedToken,
@@ -119,14 +117,15 @@ var http = {
     try {
       const response = await axios.post(
         "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/web3/sign/message/new",
+        // "http://192.168.0.6:30001/api/v1/auth/web3/sign/message/new",
         requestBody,
         { headers }
       );
-      
+
       return response.data.message;
     } catch (error) {
-      console.error(error);
-    }   
+      console.error(error.response.data.message);
+    }
   },
 
   async httpRequest(url, bytes) {
@@ -139,7 +138,7 @@ var http = {
         },
         responseType: "arraybuffer",
       });
-   
+
       return response;
     } catch (error) {
       console.error("error");
