@@ -26,11 +26,10 @@ const APP_DESCRIPTION = "ZooFrenz using Onboard";
 const EVENT_WALLET_CONNECT_UPDATED = "wallet-connect-event";
 const EVENT_NFT_LIST_UPDATED = "render-vrm-event";
 
-let wallets,
-  connectWallet,
-  disconnectConnectedWallet,
-  connectedWallet,
-  alreadyConnectedWallets;
+let connectWallet, connectedWallet, alreadyConnectedWallets;
+
+// let wallets,
+// disconnectConnectedWallet;
 
 var Web3Manager = {
   async initOnboard() {
@@ -92,16 +91,12 @@ var Web3Manager = {
     });
 
     ({
-      wallets,
+      // wallets,
       connectWallet,
-      disconnectConnectedWallet,
+      // disconnectConnectedWallet,
       connectedWallet,
       alreadyConnectedWallets,
     } = useOnboard());
-
-    console.log(connectedWallet);
-    console.log(wallets);
-    console.log(disconnectConnectedWallet);
 
     if (alreadyConnectedWallets.value[0] != null) {
       this.wallets = await connectWallet({
@@ -225,7 +220,7 @@ var Web3Manager = {
       const event = new Event(EVENT_NFT_LIST_UPDATED);
       window.dispatchEvent(event);
     });
-  },  
+  },
   async signMessage(mes) {
     const signature = await this.signer.signMessage(mes);
 

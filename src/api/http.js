@@ -2,6 +2,8 @@ import CryptoJS from "crypto-js";
 import axios from "axios";
 import web3 from "../web3/web3.js";
 
+const SERVER_URL = "https://dev-third-space-api.zoofrenz.com";
+//JWT
 const payload = {
   iss: "Zoofrenz",
   iat: Math.floor(Date.now() / 1000),
@@ -9,10 +11,7 @@ const payload = {
   client_version: "0.0.3",
   client_bundle_id: "com.zoofrenz.ThirdSpace",
 };
-
 const secretKey = "46d36f16692f1b3b6f1165a4478c4b90";
-
-//JWT
 // Encode the JWT header and payload using base64
 const header = btoa(JSON.stringify({ typ: "JWT", alg: "HS256" }));
 const encodedPayload = btoa(JSON.stringify(payload));
@@ -41,34 +40,34 @@ var http = {
     };
     try {
       const response = await axios.post(
-        "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/vrm/get",
+        SERVER_URL + ":30001/api/v1/auth/vrm/get",
         requestBody,
         { headers }
       );
-      console.log("mes = ", response.data);
+      
       open(response.data.url);
       return response.data;
-    } catch (error) { 
-      console.log(error.response.status);   
+    } catch (error) {
+      console.log(error.response.status);
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        if(error.response.status == 400 || error.response.status == 401 || error.response.status == 500)
-        {      
+        if (
+          error.response.status == 400 ||
+          error.response.status == 401 ||
+          error.response.status == 500
+        ) {
           var responseData = await this.requestSign(walletAddress);
-           await web3.signMessage(responseData);
+          await web3.signMessage(responseData);
 
-           this.requestVRMURL(walletAddress,tokenId); 
+          this.requestVRMURL(walletAddress, tokenId);
         }
-      }       
+      }
     }
   },
 
   async getEditionIdList(tokenIdList) {
     try {
       const response = await axios.get(
-        "https://dev-third-space-api.zoofrenz.com:30010/api/v1/revealedId/get?tokenId=" +
-          tokenIdList
+        SERVER_URL + ":30010/api/v1/revealedId/get?tokenId=" + tokenIdList
       );
 
       return response.data;
@@ -90,7 +89,7 @@ var http = {
     };
     try {
       const response = await axios.post(
-        "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/web3/sign/message/verify",
+        SERVER_URL + ":30001/api/v1/auth/web3/sign/message/verify",
         requestBody,
         { headers }
       );
@@ -108,7 +107,7 @@ var http = {
   async requestSign(walletAddress) {
     const requestBody = {
       address: walletAddress,
-    };    
+    };
     const headers = {
       "Content-Type": "application/x-www-form-urlencoded",
       "ZF-Client-Token": signedToken,
@@ -116,15 +115,14 @@ var http = {
     };
     try {
       const response = await axios.post(
-        "https://dev-third-space-api.zoofrenz.com:30001/api/v1/auth/web3/sign/message/new",
-        // "http://192.168.0.6:30001/api/v1/auth/web3/sign/message/new",
+        SERVER_URL + ":30001/api/v1/auth/web3/sign/message/new",
         requestBody,
         { headers }
       );
 
       return response.data.message;
     } catch (error) {
-      console.error(error.response.data.message);
+      console.error(error);
     }
   },
 
@@ -141,9 +139,7 @@ var http = {
 
       return response;
     } catch (error) {
-      console.error("error");
-      console.log(error);
-      console.error("Request failed");
+      console.error(error);
       throw error;
     }
   },
@@ -161,9 +157,7 @@ var http = {
       console.log("success");
       return response;
     } catch (error) {
-      console.error("error");
-      console.log(error);
-      console.error("Request failed");
+      console.error(error);
       throw error;
     }
   },
