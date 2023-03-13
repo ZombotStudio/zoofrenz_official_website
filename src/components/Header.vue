@@ -111,13 +111,13 @@ export default {
     };
   },
   mounted() {     
-    Web3.UpdateBlocknativeModalPos();
+    Web3.WalletCheck();    
     this.updateWalletConnected();
     window.addEventListener("wallet-connect-event", this.updateWalletConnected);
   },
   beforeUnmount() {
     window.removeEventListener("wallet-connect-event", this.updateWalletConnected);
-  },
+  },  
 };
 </script>
 

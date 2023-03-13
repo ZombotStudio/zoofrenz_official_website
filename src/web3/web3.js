@@ -26,7 +26,7 @@ var Web3Manager = {
     window.dispatchEvent(event);
 
     const MAINNET_RPC_URL =
-      "https://mainnet.infura.io/v3/28c6a50585b542a2a30d7dc9c5e3bfef";
+      "https://mainnet.infura.io/v3/b5eaf001ec414c16a70fc397ffa2980d";
 
     const injected = injectedModule();
 
@@ -69,18 +69,37 @@ var Web3Manager = {
           { name: "MetaMask", url: "https://metamask.io" },
         ],
       },
+      connect: {
+        showSidebar: true,
+        disableClose: true,
+        // autoConnectLastWallet: true,
+        // disableClose: true, // defaults to false
+        // autoConnectLastWallet: true, // defaults to false
+      },
+      accountCenter: {
+        desktop: {
+          position: 'bottomRight',
+          // enabled: true,
+          // minimal: true
+        },
+        mobile: {
+          position: 'topRight',
+          enabled: true,
+          minimal: true
+        }
+      },
     });
 
     this.wallets = await this.onboard.connectWallet();
 
     if (this.wallets.length > 0) {
+      // window.localStorage.setItem('walletConnectionInfo', JSON.stringify(walletConnectionInfo));
+
       window.walletConnected = true;
 
       const event = new Event("wallet-connect-event");
       window.dispatchEvent(event);
-
-      this.UpdateBlocknativeModalPos();
-
+      
       const ethersProvider = new ethers.providers.Web3Provider(
         this.wallets[0].provider,
         "any"
@@ -108,7 +127,6 @@ var Web3Manager = {
 
     const state = this.onboard.state.select();
     state.subscribe((update) => {
-
       if (update.wallets.length == 0) {
         window.walletConnected = false;
 
@@ -185,24 +203,75 @@ var Web3Manager = {
       console.log("error");
       console.log(error);
     }
-  },
-  UpdateBlocknativeModalPos() {
-    const elem = document.getElementsByTagName("onboard-v2");
-    if (!elem || !elem.item(0)) return;
-    const childNodes = Array.from(elem.item(0).shadowRoot.childNodes);
-    childNodes.forEach((childNode) => {
-      if (childNode.nodeName === "DIV") {
-        if (
-          childNode.className.indexOf("container") >= 0 &&
-          childNode.className.indexOf("svelte-") >= 0
-        ) {
-          childNode.style = "bottom: 1em; right: 0; width: auto;";
-          window.setTimeout(() => {
-            childNode.style = "bottom: 1em; right: 0; width: auto;";
-          }, 100);
-        }
-      }
+  },  
+  async WalletCheck() {
+    const MAINNET_RPC_URL =
+      "https://mainnet.infura.io/v3/b5eaf001ec414c16a70fc397ffa2980d";
+
+    const injected = injectedModule();
+
+    const walletConnect = walletConnectModule({
+      bridge: "https://f.bridge.walletconnect.org",
+      qrcodeModalOptions: {
+        mobileLinks: [
+          "rainbow",
+          "metamask",
+          "argent",
+          "trust",
+          "imtoken",
+          "pillar",
+        ],
+      },
+      connectFirstChainId: true,
     });
+
+    const coinbaseWalletSdk = coinbaseWalletModule({ darkMode: true });
+
+    const ledger = ledgerModule();
+
+    this.onboard = Onboard({
+      wallets: [injected, walletConnect, coinbaseWalletSdk, ledger],
+      chains: [
+        {
+          id: "0x1",
+          token: "ETH",
+          label: "Ethereum Mainnet",
+          rpcUrl: MAINNET_RPC_URL,
+        },
+      ],
+      appMetadata: {
+        name: "ZooFrenz",
+        icon: "https://zoofrenz-assets.s3.us-west-1.amazonaws.com/images/ThirdSpace_logo.png",
+        logo: "https://zoofrenz-assets.s3.us-west-1.amazonaws.com/images/ThirdSpace_logo.png",
+        description: "ZooFrenz using Onboard",
+        recommendedInjectedWallets: [
+          { name: "Coinbase", url: "https://wallet.coinbase.com/" },
+          { name: "MetaMask", url: "https://metamask.io" },
+        ],
+      },
+      connect: {
+        // disableClose: true, // defaults to false
+        autoConnectLastWallet: true, // defaults to false
+      },
+      accountCenter: {
+        desktop: {
+          position: 'bottomRight',
+          // enabled: true,
+          // minimal: true
+        },
+        mobile: {
+          position: 'topRight',
+          enabled: true,
+          minimal: true
+        }
+      },
+    });
+    console.log('ww');    
+    this.wallets = await this.onboard.connectWallet();
+    console.log(this.wallets);
+    console.log('done');  
+
+    // this.UpdateBlocknativeModalPos();
   },
 };
 
