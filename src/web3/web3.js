@@ -156,7 +156,8 @@ var Web3Manager = {
       if (update.wallets.length == 0) {
         this.onWalletDisconnected();
       }
-    });
+    });    
+
     await this.listAllZoofrenzToken();
   },
   onWalletDisconnected() {
@@ -173,7 +174,7 @@ var Web3Manager = {
     window.nftList = [];
     await this.listAwakenedZoofrenzToken();
     await this.listZoofrenzToken();
-    window.listNFTed = true;
+    window.listNFTed = false;
     this.listTokenIdLIst();
   },
 
