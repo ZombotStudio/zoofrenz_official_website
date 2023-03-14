@@ -80,7 +80,7 @@ var Web3Manager = {
       },
       accountCenter: {
         desktop: {
-          // minimal: true,
+          minimal: true,
           position: "bottomRight",
         },
         mobile: {
