@@ -49,31 +49,35 @@
       </div>
     </section>
   </main>
+  <verifying :show="showVerifying" />
 </template>
 
 <script>
 import web3 from "../web3/web3";
 import http from "../api/http";
+import verifying from "./Verifying.vue";
 
 export default {
   name: "ClaimPage",
-
+  components: { verifying },
   methods: {
-    updateListNFTed: function()
-    {
+    updateListNFTed: function () {
       this.listNFTed = window.walletConnected;
-    }
-    ,renderVRM: function () {
+    },
+    renderVRM: function () {
       this.vrmItems = window.vrmItems;
     },
 
-    downloadVRM: function (tokenId) {
-      http.requestVRMURL(web3.walletAddress, tokenId);
+    async downloadVRM (tokenId) {
+      this.showVerifying = true;
+      await http.requestVRMURL(web3.walletAddress, tokenId);
+      this.showVerifying = false;
     },
   },
 
   data() {
     return {
+      showVerifying: false,
       vrmItems: window.vrmItems,
       listNFTed: window.walletConnected,
     };
