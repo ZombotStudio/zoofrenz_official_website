@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <section class="main__banner main-banner">
+    <section v-if="!listNFTed" class="main__banner main-banner">
       <div class="main-banner__container container container--sm">
         <div class="main-banner__wrap">
           <div class="main-banner__card card">
@@ -18,7 +18,7 @@
       </div>
     </section>
 
-    <section class="main__section main-section">
+    <section v-else class="main__section main-section">
       <div class="main-section__container container">
         <div class="main-section__wrap">
           <h2 class="main-section__title section-title">Your Collection</h2>
@@ -29,7 +29,7 @@
               class="col-md-3 col-sm-6 mb-4"
             >
               <div class="collection-card">
-                <div class="collection-card__img">
+                <div class="collection-card__vrm">
                   <img :src="item.imgUrl" alt="" />
                 </div>
 
@@ -59,11 +59,15 @@ export default {
   name: "ClaimPage",
 
   methods: {
-    renderVRM: function () {        
+    updateListNFTed: function()
+    {
+      this.listNFTed = window.walletConnected;
+    }
+    ,renderVRM: function () {
       this.vrmItems = window.vrmItems;
     },
 
-    downloadVRM: function (tokenId) {      
+    downloadVRM: function (tokenId) {
       http.requestVRMURL(web3.walletAddress, tokenId);
     },
   },
@@ -71,15 +75,18 @@ export default {
   data() {
     return {
       vrmItems: window.vrmItems,
+      listNFTed: window.walletConnected,
     };
   },
-  mounted() {     
+  mounted() {
     this.renderVRM();
+    window.addEventListener("wallet-connect-event", this.updateListNFTed);
     window.addEventListener("render-vrm-event", this.renderVRM);
-    document.body.className = 'pc webp';
-    
+
+    document.body.className = "pc webp";
   },
   beforeUnmount() {
+    window.removeEventListener("wallet-connect-event", this.updateListNFTed);
     window.removeEventListener("render-vrm-event", this.renderVRM);
   },
 };

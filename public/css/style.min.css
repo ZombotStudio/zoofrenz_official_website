@@ -2363,6 +2363,10 @@ body.touch .menu__arrow::after {
 }
 
 .footer {  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
   background-color: #fff;
 }
 .footer__wrap {
@@ -3571,9 +3575,28 @@ body.touch .menu__arrow::after {
   position: relative;
   border-radius: calc(38 / var(--media-breakdown));
   padding-bottom: 92%;
+  background-image: linear-gradient(130.18deg, #cd9cf2 0%, #f6f3ff 100%);
+}
+
+.collection-card__vrm {
+  position: relative;
+  border-radius: calc(38 / var(--media-breakdown));
+  padding-bottom: 92%;
   /* background-image: linear-gradient(130.18deg, #cd9cf2 0%, #f6f3ff 100%); */
 }
+
 .collection-card__img img {
+  position: absolute;
+  border-radius: calc(20 / var(--media-breakdown));
+  left: 50%;
+  bottom: 0;
+  max-width: 100%;
+  max-height: 105%;
+  max-height: 100%;
+  transform: translateX(-50%);
+}
+
+.collection-card__vrm img {
   position: absolute;
   border-radius: calc(20 / var(--media-breakdown));
   left: 50%;
