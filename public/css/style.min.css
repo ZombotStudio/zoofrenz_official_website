@@ -3645,6 +3645,7 @@ body.touch .menu__arrow::after {
   text-align: center;
   color: #fff;
   transition: all 0.35s ease;
+  cursor: pointer;
 }
 @media (any-hover: hover) {
   .collection-card__btn:hover {

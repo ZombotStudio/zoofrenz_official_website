@@ -50,6 +50,7 @@
     </section>
   </main>
   <verifying :show="showVerifying" />
+  <!-- <verifying :show=true /> -->
 </template>
 
 <script>
