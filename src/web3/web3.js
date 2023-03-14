@@ -80,6 +80,7 @@ var Web3Manager = {
       },
       accountCenter: {
         desktop: {
+          // minimal: true,
           position: "bottomRight",
         },
         mobile: {
@@ -130,6 +131,7 @@ var Web3Manager = {
     }
   },
   async onWalletConnected() {
+    this.customOnBoardPosition();
     this.walletAddress = String(connectedWallet.value.accounts[0].address);
 
     window.walletConnected = true;
@@ -171,6 +173,7 @@ var Web3Manager = {
     window.nftList = [];
     await this.listAwakenedZoofrenzToken();
     await this.listZoofrenzToken();
+    window.listNFTed = true;
     this.listTokenIdLIst();
   },
 
@@ -226,6 +229,25 @@ var Web3Manager = {
 
     await http.verifySignedMessage(this.walletAddress, signature);
   },
+  customOnBoardPosition()
+  {
+    // const elem = document.getElementsByTagName("onboard-v2");
+    //   if (!elem || !elem.item(0)) return;
+    //   const childNodes = Array.from(elem.item(0).shadowRoot.childNodes);
+    //   childNodes.forEach((childNode) => {
+    //     if (childNode.nodeName === "DIV") {
+    //       if (
+    //         childNode.className.indexOf("container") >= 0 &&
+    //         childNode.className.indexOf("svelte-") >= 0
+    //       ) {
+    //         childNode.style = "; padding: 3px; width: 32px; height: 32px; border-radius: 8px; color: black;";
+    //         window.setTimeout(() => {
+    //           childNode.style = "; padding: 3px; width: 32px; height: 32px; border-radius: 8px; color: black;";
+    //         }, 100);
+    //       }
+    //     }
+    //   });
+  }
 };
 
 export default Web3Manager;

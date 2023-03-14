@@ -44,8 +44,8 @@ var http = {
         requestBody,
         { headers }
       );
-      
-      open(response.data.url);
+
+      window.open(response.data.url, "_self");
       return response.data;
     } catch (error) {
       console.log(error.response.status);
